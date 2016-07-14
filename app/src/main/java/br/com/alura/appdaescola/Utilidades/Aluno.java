@@ -15,15 +15,18 @@ public class Aluno {
 
     private ArrayList<Disciplinas> listaDeDisciplinas;
 
-    public Aluno(String Nome, String Idade, String Serie, ArrayList<Disciplinas> ListaDeDisciplinas){
+    public Aluno(String Nome, String Idade, String Serie){
         this.nome = Nome;
         this.idade = Idade;
         this.serie = Serie;
-        this.listaDeDisciplinas = ListaDeDisciplinas;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public void setListaDeDisciplinas(ArrayList<Disciplinas> listaDeDisciplinas) {
+        this.listaDeDisciplinas = listaDeDisciplinas;
     }
 
     public String getIdade() {

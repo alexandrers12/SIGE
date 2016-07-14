@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import br.com.alura.appdaescola.Utilidades.ContextoAplicacao;
+
 public class ListaItemActivity extends AppCompatActivity {
 
     @Override
@@ -18,6 +20,8 @@ public class ListaItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_item);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ContextoAplicacao contextoAplicacao = (ContextoAplicacao)getApplication();
 
         ArrayList<Item_Frequencia> listaDeAlunosFrequencia = new ArrayList<Item_Frequencia>();
         Item_Frequencia itemA = new Item_Frequencia("Waltim", "Matematica Discreta", "36");

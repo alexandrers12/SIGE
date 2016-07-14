@@ -17,12 +17,12 @@ import br.com.alura.appdaescola.R;
  * Created by Everton on 29/06/2016.
  */
 public class ListaItemNotas extends ArrayAdapter<Item_Nota> {
-    private Context contexto;
+    private ContextoAplicacao contexto;
 
     ////Aqui está sendo passado apenas um aluno, é preciso tratar para obter uma possível lista de alunos.
     private Aluno aluno;
 
-    public ListaItemNotas(Context Contexto, Aluno AlunoAtual) {
+    public ListaItemNotas(ContextoAplicacao Contexto, Aluno AlunoAtual) {
         super(Contexto, 0, AlunoAtual.getListaDeDisciplinas().get(1).getListaNotas());
         this.contexto = Contexto;
         this.aluno = AlunoAtual;
@@ -39,13 +39,13 @@ public class ListaItemNotas extends ArrayAdapter<Item_Nota> {
         nomeAluno.setText(aluno.getNome());
 
         TextView nomeDisciplina = (TextView) convertView.findViewById(R.id.item_nota_nome_disciplina);
-        nomeDisciplina.setText(aluno.getListaDeDisciplinas().get(1).getNome());
+        nomeDisciplina.setText(aluno.getListaDeDisciplinas().get(0).getNome());
 
         TextView periodo = (TextView) convertView.findViewById(R.id.item_nota_periodo);
-        periodo.setText(aluno.getListaDeDisciplinas().get(1).getListaNotas().get(1).getPeriodo());
+        periodo.setText(aluno.getListaDeDisciplinas().get(0).getListaNotas().get(0).getPeriodo());
 
         TextView notaPeriodo = (TextView) convertView.findViewById(R.id.item_nota_nota_periodo);
-        notaPeriodo.setText(aluno.getListaDeDisciplinas().get(1).getListaNotas().get(1).getNotaPeriodo());
+        notaPeriodo.setText(aluno.getListaDeDisciplinas().get(0).getListaNotas().get(0).getNotaPeriodo());
 
         return convertView;
     }

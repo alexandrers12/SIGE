@@ -210,33 +210,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void CarregaContexto() {
-        ContextoAplicacao contexto = (ContextoAplicacao)this.getApplicationContext();
+        ContextoAplicacao contexto = (ContextoAplicacao)getApplication();
 
-        //Vou carregar o contexto manualmente mas é aqui que o JSON que chegou pelo service
-        //deve ser convertido nos objetos compatíveis com o contexto da aplicação.
-        Item_Nota primeiro = new Item_Nota("1°Bimestre", "7.5");
-        Item_Nota segundo = new Item_Nota("2°Bimestre", "6.0");
-        Item_Nota terceiro = new Item_Nota("3°Bimestre", "8.2");
-        Item_Nota quarto = new Item_Nota("4°Bimestre", "Não disponível");
-        ArrayList<Item_Nota> listaDeNotaPorBimestre = new ArrayList<Item_Nota>();
-        listaDeNotaPorBimestre.add(primeiro);
-        listaDeNotaPorBimestre.add(segundo);
-        listaDeNotaPorBimestre.add(terceiro);
-        listaDeNotaPorBimestre.add(quarto);
-        String quantidadeDeFaltas = "10";
+        UsuarioResponsavelLegal responsavelLegal = ObtemDadosUsusarioResponsavelLogado();
 
-        Disciplinas disciplina = new Disciplinas("Matemática", listaDeNotaPorBimestre, quantidadeDeFaltas);
+        contexto.setResponsavelAlunoContexto(responsavelLegal);
+    }
 
-        ArrayList<Disciplinas> listaDeDisciplinas = new ArrayList<Disciplinas>();
-        listaDeDisciplinas.add(disciplina);
+    private UsuarioResponsavelLegal ObtemDadosUsusarioResponsavelLogado() {
+        //TODO: PABLO Aqui os dados do responsável estão sendo criados manualmente.
+        //Implemente o consumo do serviço nessa parte.
 
-        Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série", listaDeDisciplinas);
+        Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série");
 
         ArrayList<Aluno> listaDeDependenteAluno = new ArrayList<Aluno>();
         listaDeDependenteAluno.add(joazinho);
-        UsuarioResponsavelLegal responsavelLegal = new UsuarioResponsavelLegal("Judith", listaDeDependenteAluno);
-
-        contexto.setResponsavelAlunoContexto(responsavelLegal);
+        return new UsuarioResponsavelLegal("Judith", listaDeDependenteAluno);
     }
 
     private boolean isEmailValid(String email) {
