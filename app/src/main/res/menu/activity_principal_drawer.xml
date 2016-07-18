@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_notas" android:icon="@android:drawable/ic_menu_agenda"
-            android:title="Notas" />
-        <item android:id="@+id/nav_faltas" android:icon="@android:drawable/ic_dialog_alert"
-            android:title="Faltas" />
-        <item android:id="@+id/nav_taxas" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Taxas escolares" />
+        <item android:id="@+id/nav_notas"
+            android:icon="@drawable/icon_nota"
+            android:title="Notas"
+            android:showAsAction="always"/>
+
+        <item android:id="@+id/nav_faltas"
+            android:icon="@drawable/icon_checklist"
+            android:title="Faltas"
+            android:showAsAction="always"/>
+
+        <item android:id="@+id/nav_taxas"
+            android:icon="@drawable/icon_under_contruction"
+            android:title="Taxas - Em construção"
+            android:showAsAction="always"/>
     </group>
 </menu>

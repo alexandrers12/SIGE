@@ -23,7 +23,7 @@ public class ListaItemNotas extends ArrayAdapter<Item_Nota> {
     private Aluno aluno;
 
     public ListaItemNotas(ContextoAplicacao Contexto, Aluno AlunoAtual) {
-        super(Contexto, 0, AlunoAtual.getListaDeDisciplinas().get(1).getListaNotas());
+        super(Contexto, 0, AlunoAtual.getListaDeDisciplinas().get(0).getListaNotas());
         this.contexto = Contexto;
         this.aluno = AlunoAtual;
     }

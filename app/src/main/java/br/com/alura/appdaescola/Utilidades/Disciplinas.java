@@ -24,6 +24,10 @@ public class Disciplinas {
         return nome;
     }
 
+    public void setFaltas(String faltas) {
+        this.faltas = faltas;
+    }
+
     public ArrayList<Item_Nota> getListaNotas() {
         return listaNotas;
     }

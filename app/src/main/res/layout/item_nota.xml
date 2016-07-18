@@ -9,27 +9,31 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/item_nota_nome_aluno" />
+        android:id="@+id/item_nota_nome_aluno"
+        android:textColor="#000000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/item_nota_nome_disciplina"/>
+        android:id="@+id/item_nota_nome_disciplina"
+        android:textColor="#000000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/item_nota_periodo"/>
+        android:id="@+id/item_nota_periodo"
+        android:textColor="#000000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/item_nota_nota_periodo"/>
+        android:id="@+id/item_nota_nota_periodo"
+        android:textColor="#000000"/>
 
 </LinearLayout>

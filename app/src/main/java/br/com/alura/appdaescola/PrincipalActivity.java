@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 import br.com.alura.appdaescola.Utilidades.Aluno;
 import br.com.alura.appdaescola.Utilidades.ContextoAplicacao;
+import br.com.alura.appdaescola.Utilidades.Disciplinas;
+import br.com.alura.appdaescola.Utilidades.Item_Nota;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -109,13 +111,34 @@ public class PrincipalActivity extends AppCompatActivity
         }
         else if(estaConectadoNaInternet){
             //TODO: PABLO Serviço carrega ou atualiza os alunos da listaDeAluno com as notas.
+            CarregaListaDeDisciplinas(listaAluno);
+        }
+    }
+
+    private void CarregaListaDeDisciplinas(ArrayList<Aluno> listaAluno) {
+        //Pablo, vou criar a disciplina manualmente para teste. Carregue através do serviço.
+        ArrayList<Item_Nota> listaDeNotas = new ArrayList<Item_Nota>();
+        Item_Nota primeiroBimestre = new Item_Nota("1° bimestre", "8.0");
+        listaDeNotas.add(primeiroBimestre);
+        Item_Nota segundoBimestre = new Item_Nota("2° bimestre", "7.0");
+        listaDeNotas.add(segundoBimestre);
+        Item_Nota terceiroBimestre = new Item_Nota("3° bimestre", "6.0");
+        listaDeNotas.add(terceiroBimestre);
+
+        Disciplinas disciplina = new Disciplinas("Matematica", listaDeNotas, "4");
+        ArrayList<Disciplinas> listaDeDisciplinas = new ArrayList<Disciplinas>();
+        listaDeDisciplinas.add(disciplina);
+
+        for (Aluno aluno: listaAluno) {
+            aluno.setListaDeDisciplinas(listaDeDisciplinas);
         }
     }
 
     private Boolean VerificaSeAlunosTemDisciplinasEmCache(ArrayList<Aluno> listaAluno) {
 
         for (Aluno aluno: listaAluno) {
-            if(aluno.getListaDeDisciplinas() != null || !aluno.getListaDeDisciplinas().isEmpty()){
+            ArrayList<Disciplinas> listaDisciplinas = aluno.getListaDeDisciplinas();
+            if(listaDisciplinas != null){
                 return true;
             }
         }

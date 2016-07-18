@@ -22,7 +22,6 @@ public class ListaItemFrequencia extends ArrayAdapter<Item_Frequencia> {
         super(Contexto, 0, ListaDeItens);
         this.contexto = Contexto;
         this.listaDeItens = ListaDeItens;
-
     }
 
     @Override
