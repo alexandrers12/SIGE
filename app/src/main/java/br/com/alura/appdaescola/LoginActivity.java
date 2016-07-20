@@ -221,10 +221,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //TODO: PABLO Aqui os dados do responsável estão sendo criados manualmente.
         //Implemente o consumo do serviço nessa parte.
 
-        Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série");
-
         ArrayList<Aluno> listaDeDependenteAluno = new ArrayList<Aluno>();
+        Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série");
+        Aluno mariazinha = new Aluno("Mariazinha", "7", "2°Série");
+        Aluno jhonnysclay = new Aluno("Jhonnysclayton", "15", "1°Ano");
+
         listaDeDependenteAluno.add(joazinho);
+        listaDeDependenteAluno.add(mariazinha);
+        listaDeDependenteAluno.add(jhonnysclay);
         return new UsuarioResponsavelLegal("Judith", listaDeDependenteAluno);
     }
 

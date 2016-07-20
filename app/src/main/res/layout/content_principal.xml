@@ -12,4 +12,9 @@
     tools:showIn="@layout/app_bar_principal"
     tools:context="br.com.alura.appdaescola.PrincipalActivity">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_principal_listView"></ListView>
+
 </RelativeLayout>

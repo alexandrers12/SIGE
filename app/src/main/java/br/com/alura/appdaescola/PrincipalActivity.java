@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import br.com.alura.appdaescola.Utilidades.Aluno;
 import br.com.alura.appdaescola.Utilidades.ContextoAplicacao;
 import br.com.alura.appdaescola.Utilidades.Disciplinas;
 import br.com.alura.appdaescola.Utilidades.Item_Nota;
+import br.com.alura.appdaescola.Utilidades.ListaAlunoAdapter;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +43,14 @@ public class PrincipalActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ContextoAplicacao contextoAplicacao = (ContextoAplicacao)getApplication();
+        ArrayList<Aluno> listaDeAluno = contextoAplicacao.getResponsavelAlunoContexto().getListaDeDependentes();
+
+        ListaAlunoAdapter listaAdapter = new ListaAlunoAdapter(this, listaDeAluno);
+        ListView listView = (ListView)findViewById(R.id.content_principal_listView);
+
+        listView.setAdapter(listaAdapter);
     }
 
     @Override
