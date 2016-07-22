@@ -10,9 +10,9 @@
     tools:showIn="@layout/activity_lista_item_nota"
     tools:context="br.com.alura.appdaescola.ListaItemNotaActivity">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerNota"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/list_view_nota"></ListView>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

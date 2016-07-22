@@ -134,10 +134,24 @@ public class PrincipalActivity extends AppCompatActivity
         listaDeNotas.add(segundoBimestre);
         Item_Nota terceiroBimestre = new Item_Nota("3° bimestre", "6.0");
         listaDeNotas.add(terceiroBimestre);
+        Item_Nota quartoBimestre = new Item_Nota("4° bimestre", "6.0");
+        listaDeNotas.add(quartoBimestre);
 
-        Disciplinas disciplina = new Disciplinas("Matematica", listaDeNotas, "4");
+        Disciplinas matematica = new Disciplinas("Matematica", listaDeNotas, "4");
+        Disciplinas portugues = new Disciplinas("Português", listaDeNotas, "12");
+        Disciplinas geografia = new Disciplinas("Geografia", listaDeNotas, "12");
+        Disciplinas historia = new Disciplinas("História", listaDeNotas, "12");
+        Disciplinas ingles = new Disciplinas("Inglês", listaDeNotas, "12");
+        Disciplinas ensinoReligioso = new Disciplinas("Ensino Religioso", listaDeNotas, "12");
+        Disciplinas educacaoFisica = new Disciplinas("Educação Física", listaDeNotas, "12");
         ArrayList<Disciplinas> listaDeDisciplinas = new ArrayList<Disciplinas>();
-        listaDeDisciplinas.add(disciplina);
+        listaDeDisciplinas.add(matematica);
+        listaDeDisciplinas.add(portugues);
+        listaDeDisciplinas.add(geografia);
+        listaDeDisciplinas.add(historia);
+        listaDeDisciplinas.add(ingles);
+        listaDeDisciplinas.add(ensinoReligioso);
+        listaDeDisciplinas.add(educacaoFisica);
 
         for (Aluno aluno: listaAluno) {
             aluno.setListaDeDisciplinas(listaDeDisciplinas);

@@ -38,6 +38,9 @@ public class ListaAlunoAdapter extends ArrayAdapter<Aluno> {
         TextView serieAlunoText = (TextView)convertView.findViewById(R.id.item_aluno_serie);
         serieAlunoText.setText(alunoPosicao.getSerie());
 
+        TextView matriculaAlunoText = (TextView)convertView.findViewById(R.id.item_aluno_matricula);
+        matriculaAlunoText.setText(String.valueOf(alunoPosicao.getMatricula()));
+
         return convertView;
     }
 }

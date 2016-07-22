@@ -222,13 +222,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //Implemente o consumo do serviço nessa parte.
 
         ArrayList<Aluno> listaDeDependenteAluno = new ArrayList<Aluno>();
-        Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série");
-        Aluno mariazinha = new Aluno("Mariazinha", "7", "2°Série");
-        Aluno jhonnysclay = new Aluno("Jhonnysclayton", "15", "1°Ano");
+        //Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série");
+        //Aluno mariazinha = new Aluno("Mariazinha", "7", "2°Série");
+
+        Aluno joazinho = new Aluno();
+        Aluno mariazinha = new Aluno();
 
         listaDeDependenteAluno.add(joazinho);
         listaDeDependenteAluno.add(mariazinha);
-        listaDeDependenteAluno.add(jhonnysclay);
         return new UsuarioResponsavelLegal("Judith", listaDeDependenteAluno);
     }
 
