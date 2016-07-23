@@ -30,10 +30,13 @@ public class ListaItemFrequencia extends ArrayAdapter<Item_Frequencia> {
 
         convertView = LayoutInflater.from(this.contexto).inflate(R.layout.item_frequencia, null);
 
-        TextView disciplina = (TextView) convertView.findViewById(R.id.item_frequencia_disciplina);
+        TextView nome = (TextView) convertView.findViewById(R.id.textView2);
+        nome.setText(item.getNome());
+
+        TextView disciplina = (TextView) convertView.findViewById(R.id.textView3);
         disciplina.setText(item.getDisciplaina());
 
-        TextView faltas = (TextView) convertView.findViewById(R.id.item_frequencia_faltas);
+        TextView faltas = (TextView) convertView.findViewById(R.id.textView4);
         faltas.setText(item.getFaltas());
 
         return convertView;

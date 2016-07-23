@@ -35,23 +35,18 @@ public class ListaItemNotas extends ArrayAdapter<Item_Nota> {
 
         convertView = LayoutInflater.from(this.contexto).inflate(R.layout.item_nota, null);
 
+        TextView nomeAluno = (TextView) convertView.findViewById(R.id.item_nota_nome_aluno);
+        nomeAluno.setText(aluno.getNome());
+
         TextView nomeDisciplina = (TextView) convertView.findViewById(R.id.item_nota_nome_disciplina);
         nomeDisciplina.setText(aluno.getListaDeDisciplinas().get(0).getNome());
 
-        String notaFormatadaParaImpressao = FormataNotas(aluno.getListaDeDisciplinas().get(0).getListaNotas());
+        TextView periodo = (TextView) convertView.findViewById(R.id.item_nota_periodo);
+        periodo.setText(aluno.getListaDeDisciplinas().get(0).getListaNotas().get(0).getPeriodo());
 
-        TextView periodo = (TextView) convertView.findViewById(R.id.item_nota_notas);
-        periodo.setText(notaFormatadaParaImpressao);
+        TextView notaPeriodo = (TextView) convertView.findViewById(R.id.item_nota_nota_periodo);
+        notaPeriodo.setText(aluno.getListaDeDisciplinas().get(0).getListaNotas().get(0).getNotaPeriodo());
 
         return convertView;
-    }
-
-    private String FormataNotas(ArrayList<Item_Nota> listaNotas) {
-        String notaFormatada = "";
-        for (Item_Nota nota:listaNotas) {
-            notaFormatada += nota.getPeriodo() + ": " + nota.getNotaPeriodo() + "   ";
-        }
-
-        return notaFormatada;
     }
 }
