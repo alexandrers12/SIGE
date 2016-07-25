@@ -35,18 +35,35 @@ public class ListaItemNotas extends ArrayAdapter<Item_Nota> {
 
         convertView = LayoutInflater.from(this.contexto).inflate(R.layout.item_nota, null);
 
-        TextView nomeAluno = (TextView) convertView.findViewById(R.id.item_nota_nome_aluno);
-        nomeAluno.setText(aluno.getNome());
-
         TextView nomeDisciplina = (TextView) convertView.findViewById(R.id.item_nota_nome_disciplina);
-        nomeDisciplina.setText(aluno.getListaDeDisciplinas().get(0).getNome());
+        nomeDisciplina.setText(aluno.getListaDeDisciplinas().get(position).getNome());
 
-        TextView periodo = (TextView) convertView.findViewById(R.id.item_nota_periodo);
-        periodo.setText(aluno.getListaDeDisciplinas().get(0).getListaNotas().get(0).getPeriodo());
+        ArrayList<Item_Nota> listaDeNotas = aluno.getListaDeDisciplinas().get(position).getListaNotas();
+        Item_Nota itemNotaPrimeiro = listaDeNotas.get(0);
+        String primeiroPeriodo = FormataNotas(itemNotaPrimeiro.getPeriodo(), itemNotaPrimeiro.getNotaPeriodo());
+        Item_Nota itemNotaSegundo = listaDeNotas.get(1);
+        String segundoPeriodo = FormataNotas(itemNotaSegundo.getPeriodo(), itemNotaSegundo.getNotaPeriodo());
+        Item_Nota itemNotaTerceiro = listaDeNotas.get(2);
+        String terceiroPeriodo = FormataNotas(itemNotaTerceiro.getPeriodo(), itemNotaTerceiro.getNotaPeriodo());
+        Item_Nota itemNotaQuarto = listaDeNotas.get(3);
+        String quartoPeriodo = FormataNotas(itemNotaQuarto.getPeriodo(), itemNotaQuarto.getNotaPeriodo());
 
-        TextView notaPeriodo = (TextView) convertView.findViewById(R.id.item_nota_nota_periodo);
-        notaPeriodo.setText(aluno.getListaDeDisciplinas().get(0).getListaNotas().get(0).getNotaPeriodo());
+        TextView periodoUm = (TextView) convertView.findViewById(R.id.item_nota_primeiro);
+        periodoUm.setText(primeiroPeriodo);
+
+        TextView periodoDois = (TextView) convertView.findViewById(R.id.item_nota_segundo);
+        periodoDois.setText(segundoPeriodo);
+
+        TextView periodoTres = (TextView) convertView.findViewById(R.id.item_nota_terceiro);
+        periodoTres.setText(terceiroPeriodo);
+
+        TextView periodoQuatro = (TextView) convertView.findViewById(R.id.item_nota_quarto);
+        periodoQuatro.setText(quartoPeriodo);
 
         return convertView;
+    }
+
+    private String FormataNotas(String periodo, String nota) {
+        return periodo + ": " + nota;
     }
 }

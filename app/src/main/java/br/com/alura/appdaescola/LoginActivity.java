@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -222,13 +223,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //Implemente o consumo do serviço nessa parte.
 
         ArrayList<Aluno> listaDeDependenteAluno = new ArrayList<Aluno>();
-        Aluno joazinho = new Aluno("Joãozinho", "12", "6°Série");
-        Aluno mariazinha = new Aluno("Mariazinha", "7", "2°Série");
-        Aluno jhonnysclay = new Aluno("Jhonnysclayton", "15", "1°Ano");
+        Aluno joazinho = new Aluno();
+        joazinho.setNome("Joaozinho");
+        joazinho.setIdade("12");
+        joazinho.setSerie("6° Série");
+        joazinho.setMatricula(20131023);
+        
+        Aluno mariazinha = new Aluno();
+        mariazinha.setNome("Mariazinha");
+        mariazinha.setIdade("7");
+        mariazinha.setSerie("3° Série");
+        mariazinha.setMatricula(20132410);
 
         listaDeDependenteAluno.add(joazinho);
         listaDeDependenteAluno.add(mariazinha);
-        listaDeDependenteAluno.add(jhonnysclay);
         return new UsuarioResponsavelLegal("Judith", listaDeDependenteAluno);
     }
 

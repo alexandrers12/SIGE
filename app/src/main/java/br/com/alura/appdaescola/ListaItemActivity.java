@@ -5,14 +5,20 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import br.com.alura.appdaescola.Adapters.ListaDeFrequenciaAdapter;
+import br.com.alura.appdaescola.Adapters.SimpleAdapter;
+import br.com.alura.appdaescola.Adapters.SimpleSectionedRecyclerViewAdapter;
 import br.com.alura.appdaescola.Utilidades.Aluno;
 import br.com.alura.appdaescola.Utilidades.ContextoAplicacao;
+import br.com.alura.appdaescola.Utilidades.Disciplinas;
 
 public class ListaItemActivity extends AppCompatActivity {
 
@@ -23,30 +29,48 @@ public class ListaItemActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        AdaptaLista();
+    }
+
+    private void AdaptaLista() {
         ContextoAplicacao contextoAplicacao = (ContextoAplicacao)getApplication();
+        ArrayList<Aluno> listaDeAluno = contextoAplicacao.getResponsavelAlunoContexto().getListaDeDependentes();
+        ArrayList<Item_Frequencia> listaDeAlunosFrequencia = ObtemListaItemFrequencia(listaDeAluno);
 
-        ArrayList<Item_Frequencia> listaDeAlunosFrequencia = ObtemListaItemFrequencia();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        recyclerView.setHasFixedSize(true);
 
-        ListaItemFrequencia listaAdapter = new ListaItemFrequencia(this, listaDeAlunosFrequencia);
+        ListaDeFrequenciaAdapter adapter = new ListaDeFrequenciaAdapter(contextoAplicacao, listaDeAlunosFrequencia);
 
-        ListView listView = (ListView) findViewById(R.id.list_view_frequencia);
+        RecyclerView.LayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
-        listView.setAdapter(listaAdapter);
+        recyclerView.setLayoutManager(layout);
+
+        ArrayList<SimpleSectionedRecyclerViewAdapter.Section> sections =
+                new ArrayList<SimpleSectionedRecyclerViewAdapter.Section>();
+
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(0,listaDeAluno.get(0).getNome()));
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(7,listaDeAluno.get(1).getNome()));
+
+        SimpleSectionedRecyclerViewAdapter.Section[] dummy = new SimpleSectionedRecyclerViewAdapter.Section[sections.size()];
+        SimpleSectionedRecyclerViewAdapter mSectionedAdapter = new SimpleSectionedRecyclerViewAdapter(this,R.layout.section,R.id.section_text,adapter);
+        mSectionedAdapter.setSections(sections.toArray(dummy));
+
+        recyclerView.setAdapter(mSectionedAdapter);
     }
 
     @NonNull
-    private ArrayList<Item_Frequencia> ObtemListaItemFrequencia() {
-        ContextoAplicacao contexto = (ContextoAplicacao)getApplication();
-        ArrayList<Aluno> listaAlunoDoContexto = contexto.getResponsavelAlunoContexto().getListaDeDependentes();
+    private ArrayList<Item_Frequencia> ObtemListaItemFrequencia(ArrayList<Aluno> listaAlunoDoContexto) {
         ArrayList<Item_Frequencia> listaDeAlunosFrequencia = new ArrayList<Item_Frequencia>();
-        Item_Frequencia itemA = new Item_Frequencia("Waltim", "Matematica Discreta", "36");
-        Item_Frequencia itemB = new Item_Frequencia("Kaique Pedreiro", "Matemática Discreta", "0");
-        Item_Frequencia itemC = new Item_Frequencia("Pablo a Voz Romantica", "Matemática Discreta", "12");
 
-        listaDeAlunosFrequencia.add(itemA);
-        listaDeAlunosFrequencia.add(itemB);
-        listaDeAlunosFrequencia.add(itemC);
+        for (Aluno aluno: listaAlunoDoContexto) {
+            for (Disciplinas disciplina: aluno.getListaDeDisciplinas()) {
+
+                Item_Frequencia item = new Item_Frequencia(disciplina.getNome(), disciplina.getFaltas());
+                listaDeAlunosFrequencia.add(item);
+            }
+        }
+
         return listaDeAlunosFrequencia;
     }
-
 }

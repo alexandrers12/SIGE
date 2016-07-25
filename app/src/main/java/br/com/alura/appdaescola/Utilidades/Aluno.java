@@ -1,5 +1,10 @@
 package br.com.alura.appdaescola.Utilidades;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -13,13 +18,29 @@ public class Aluno {
 
     private String serie;
 
-    private ArrayList<Disciplinas> listaDeDisciplinas;
-
-    public Aluno(String Nome, String Idade, String Serie){
-        this.nome = Nome;
-        this.idade = Idade;
-        this.serie = Serie;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+
+    private int matricula;
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    private ArrayList<Disciplinas> listaDeDisciplinas;
 
     public String getNome() {
         return nome;
@@ -39,5 +60,34 @@ public class Aluno {
 
     public ArrayList<Disciplinas> getListaDeDisciplinas() {
         return listaDeDisciplinas;
+    }
+
+    public Aluno popularAluno(String json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+
+            this.nome = jsonObject.getString("nome");
+            this.matricula = jsonObject.getInt("matricula");
+            this.serie = jsonObject.getString("serie");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public Aluno popularAluno(JSONObject json) {
+        try {
+            this.nome       = json.getString("nome");
+            this.matricula  = json.getInt("matricula");
+            this.serie      = json.getString("serie");
+
+            Log.d("Nome", this.nome);
+            Log.d("Serie", this.serie);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return this;
     }
 }
